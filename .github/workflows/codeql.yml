@@ -38,3 +38,5 @@ jobs:
 # Esegui l'analisi CodeQL
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
+
+
