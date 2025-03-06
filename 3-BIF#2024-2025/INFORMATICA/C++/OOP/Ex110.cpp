@@ -1,23 +1,6 @@
-/*
-Ex 110
-Classe Contatore
-
-Definire una classe contatore (intero) con
-
-    1. Attributi:valore  contatore
-    2. Metodi:  costruttore  di default, altro costruttore che imposta ad un dato valore;
-    3. Set contatore: lo incrementa/decrementa di un valore;
-    4. Get: restituisce il valore contatore.
-
-Nel main
-Istanziare 1 oggetto A,
-stamparlo e modificarlo + volte
-Idem con un oggetto B
-idem con un oggetto C allocato dinamicamente
-*/
-
 #include <iostream>
 using namespace std;
+
 class Contatore
 {
 private:
@@ -45,32 +28,50 @@ public:
 
 int main()
 {
+    int valoreIniziale, incremento;
+
     // Istanziare 1 oggetto A
-    Contatore A;
+    cout << "Inserisci il valore iniziale per A: ";
+    cin >> valoreIniziale;
+    Contatore A(valoreIniziale);
     cout << "Valore iniziale di A: " << A.getContatore() << endl;
-    A.setContatore(5);
-    cout << "Valore di A dopo incremento di 5: " << A.getContatore() << endl;
-    A.setContatore(-2);
-    cout << "Valore di A dopo decremento di 2: " << A.getContatore() << endl;
+    cout << "Inserisci il valore di incremento/decremento per A: ";
+    cin >> incremento;
+    A.setContatore(incremento);
+    cout << "Valore di A dopo incremento/decremento: " << A.getContatore() << endl;
 
     // Istanziare 1 oggetto B
-    Contatore B(10);
+    cout << "Inserisci il valore iniziale per B: ";
+    cin >> valoreIniziale;
+    Contatore B(valoreIniziale);
     cout << "Valore iniziale di B: " << B.getContatore() << endl;
-    B.setContatore(3);
-    cout << "Valore di B dopo incremento di 3: " << B.getContatore() << endl;
-    B.setContatore(-4);
-    cout << "Valore di B dopo decremento di 4: " << B.getContatore() << endl;
+    cout << "Inserisci il valore di incremento/decremento per B: ";
+    cin >> incremento;
+    B.setContatore(incremento);
+    cout << "Valore di B dopo incremento/decremento: " << B.getContatore() << endl;
 
     // Istanziare 1 oggetto C allocato dinamicamente
-    Contatore *C = new Contatore(20);
+    cout << "Inserisci il valore iniziale per C: ";
+    cin >> valoreIniziale;
+    Contatore *C = new Contatore(valoreIniziale);
     cout << "Valore iniziale di C: " << C->getContatore() << endl;
-    C->setContatore(7);
-    cout << "Valore di C dopo incremento di 7: " << C->getContatore() << endl;
-    C->setContatore(-5);
-    cout << "Valore di C dopo decremento di 5: " << C->getContatore() << endl;
+    cout << "Inserisci il valore di incremento/decremento per C: ";
+    cin >> incremento;
+    C->setContatore(incremento);
+    cout << "Valore di C dopo incremento/decremento: " << C->getContatore() << endl;
 
     // Deallocare l'oggetto C
     delete C;
+
+    // Istanziare 1 oggetto D
+    cout << "Inserisci il valore iniziale per D: ";
+    cin >> valoreIniziale;
+    Contatore D(valoreIniziale);
+    cout << "Valore iniziale di D: " << D.getContatore() << endl;
+    cout << "Inserisci il valore di incremento/decremento per D: ";
+    cin >> incremento;
+    D.setContatore(incremento);
+    cout << "Valore di D dopo incremento/decremento: " << D.getContatore() << endl;
 
     return 0;
 }
