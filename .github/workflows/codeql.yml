@@ -23,22 +23,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Inizia il setup di CodeQL
+# Inizia il setup di CodeQL
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
 
-    # Esegui i tuoi comandi di build qui
+# Esegui i tuoi comandi di build qui
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
-      # Se autobuild non funziona, utilizza i tuoi comandi.
-      # Esempio:
-      # run: |
-      #   cmake -S . -B build
-      #   cmake --build build
-
-    # Esegui l'analisi CodeQL
+    - run: |
+        cmake -S . -B build
+        cmake --build build
+# Esegui l'analisi CodeQL
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
-      
