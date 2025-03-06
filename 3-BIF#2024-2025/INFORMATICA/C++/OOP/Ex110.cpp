@@ -7,19 +7,19 @@ private:
     int valore;
 
 public:
-    // Costruttore di default
+    // Costruttore di default che inizializza il contatore a 0
     Contatore() : valore(0) {}
 
-    // Altro costruttore che imposta ad un dato valore
+    // Costruttore che inizializza il contatore ad un valore specificato
     Contatore(int v) : valore(v) {}
 
-    // Metodo per incrementare/decrementare il contatore
+    // Metodo per incrementare o decrementare il valore del contatore
     void setContatore(int v)
     {
         valore += v;
     }
 
-    // Metodo per ottenere il valore del contatore
+    // Metodo per ottenere il valore corrente del contatore
     int getContatore() const
     {
         return valore;
@@ -30,7 +30,7 @@ int main()
 {
     int valoreIniziale, incremento;
 
-    // Istanziare 1 oggetto A
+    // Istanziare un oggetto A e impostare il valore iniziale
     cout << "Inserisci il valore iniziale per A: ";
     cin >> valoreIniziale;
     Contatore A(valoreIniziale);
@@ -40,7 +40,7 @@ int main()
     A.setContatore(incremento);
     cout << "Valore di A dopo incremento/decremento: " << A.getContatore() << endl;
 
-    // Istanziare 1 oggetto B
+    // Istanziare un oggetto B e impostare il valore iniziale
     cout << "Inserisci il valore iniziale per B: ";
     cin >> valoreIniziale;
     Contatore B(valoreIniziale);
@@ -50,7 +50,7 @@ int main()
     B.setContatore(incremento);
     cout << "Valore di B dopo incremento/decremento: " << B.getContatore() << endl;
 
-    // Istanziare 1 oggetto C allocato dinamicamente
+    // Istanziare un oggetto C allocato dinamicamente e impostare il valore iniziale
     cout << "Inserisci il valore iniziale per C: ";
     cin >> valoreIniziale;
     Contatore *C = new Contatore(valoreIniziale);
@@ -63,7 +63,7 @@ int main()
     // Deallocare l'oggetto C
     delete C;
 
-    // Istanziare 1 oggetto D
+    // Istanziare un oggetto D e impostare il valore iniziale
     cout << "Inserisci il valore iniziale per D: ";
     cin >> valoreIniziale;
     Contatore D(valoreIniziale);
