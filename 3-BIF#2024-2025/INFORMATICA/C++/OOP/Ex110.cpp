@@ -1,3 +1,25 @@
+/*
+Ex. 110
+Classe  Contatore
+
+Definire una classe contatore (intero) con
+
+Attributi:
+    valore  contatore
+Metodi:
+    1. costruttore  di default
+    2. altro costruttore che imposta ad un dato valore
+Set contatore:
+    lo incrementa / decrementa di un valore
+Get:
+    restituisce il  valore  contatore
+
+Main()
+Istanziare 1 oggetto A,
+stamparlo e modificarlo + volte
+Idem con un oggetto B e con un oggetto C allocato dinamicamente
+*/
+
 #include <iostream>
 using namespace std;
 
