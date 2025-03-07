@@ -50,49 +50,37 @@ public:
 
 int main()
 {
-    int valoreIniziale, incremento;
+    // Valori iniziali e incrementi/decrementi predefiniti
+    int valoreInizialeA = 10, incrementoA = 5;
+    int valoreInizialeB = 20, incrementoB = -3;
+    int valoreInizialeC = 30, incrementoC = 7;
+    int valoreInizialeD = 40, incrementoD = -10;
 
     // Istanziare un oggetto A e impostare il valore iniziale
-    cout << "Inserisci il valore iniziale per A: ";
-    cin >> valoreIniziale;
-    Contatore A(valoreIniziale);
+    Contatore A(valoreInizialeA);
     cout << "Valore iniziale di A: " << A.getContatore() << endl;
-    cout << "Inserisci il valore di incremento/decremento per A: ";
-    cin >> incremento;
-    A.setContatore(incremento);
+    A.setContatore(incrementoA);
     cout << "Valore di A dopo incremento/decremento: " << A.getContatore() << endl;
 
     // Istanziare un oggetto B e impostare il valore iniziale
-    cout << "Inserisci il valore iniziale per B: ";
-    cin >> valoreIniziale;
-    Contatore B(valoreIniziale);
+    Contatore B(valoreInizialeB);
     cout << "Valore iniziale di B: " << B.getContatore() << endl;
-    cout << "Inserisci il valore di incremento/decremento per B: ";
-    cin >> incremento;
-    B.setContatore(incremento);
+    B.setContatore(incrementoB);
     cout << "Valore di B dopo incremento/decremento: " << B.getContatore() << endl;
 
     // Istanziare un oggetto C allocato dinamicamente e impostare il valore iniziale
-    cout << "Inserisci il valore iniziale per C: ";
-    cin >> valoreIniziale;
-    Contatore *C = new Contatore(valoreIniziale);
+    Contatore *C = new Contatore(valoreInizialeC);
     cout << "Valore iniziale di C: " << C->getContatore() << endl;
-    cout << "Inserisci il valore di incremento/decremento per C: ";
-    cin >> incremento;
-    C->setContatore(incremento);
+    C->setContatore(incrementoC);
     cout << "Valore di C dopo incremento/decremento: " << C->getContatore() << endl;
 
     // Deallocare l'oggetto C
     delete C;
 
     // Istanziare un oggetto D e impostare il valore iniziale
-    cout << "Inserisci il valore iniziale per D: ";
-    cin >> valoreIniziale;
-    Contatore D(valoreIniziale);
+    Contatore D(valoreInizialeD);
     cout << "Valore iniziale di D: " << D.getContatore() << endl;
-    cout << "Inserisci il valore di incremento/decremento per D: ";
-    cin >> incremento;
-    D.setContatore(incremento);
+    D.setContatore(incrementoD);
     cout << "Valore di D dopo incremento/decremento: " << D.getContatore() << endl;
 
     return 0;
