@@ -16,7 +16,7 @@ main():
 Chiamare i vari Metodi
 */
 #include <iostream>
-
+using namespace std;
 class Contatore
 {
 private:
