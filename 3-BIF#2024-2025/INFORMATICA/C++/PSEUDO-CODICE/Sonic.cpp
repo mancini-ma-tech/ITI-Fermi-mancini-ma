@@ -2,10 +2,10 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
-using std::cin;
-using std::cout;
-using std::endl;
-
+using cin;
+using cout;
+using endl;
+using namespace std;
 void startGame()
 {
     static bool seeded = false;
@@ -30,7 +30,7 @@ void startGame()
         if (cin.fail() || (input != 'a' && input != 'd' && input != 'q'))
         {
             cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Comando non riconosciuto. Riprova." << endl;
             continue;
         }
@@ -102,7 +102,7 @@ int main()
         if (cin.fail() || (input != 's' && input != 'S' && input != 'n' && input != 'N'))
         {
             cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Comando non riconosciuto. Riprova." << endl;
             continue;
         }
