@@ -1,5 +1,5 @@
 /*
-Ex 93
+Ex. 93
 File, conta caratteri
 Scrivere un programma che conta quanti
 caratteri ci sono nel file 93_ingresso.txt.
@@ -31,6 +31,6 @@ int main()
 
     file.close();
 
-    cout << "Questo il numero dei caratteri trovati: " << count << endl;
+    cout << "Questo è il numero dei caratteri trovati: " << count << endl;
     return 0;
 }
