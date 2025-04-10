@@ -2,11 +2,114 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <title>Faccia su Canvas</title>
     <link rel="stylesheet" href="..//CSS/Ex40.css" />
-    <script src="..//JavaScript/Ex40.js"></script>
+    <title>Faccia su Canvas</title>
   </head>
   <body>
     <canvas id="c1" width="300" height="300"></canvas>
+
+    <script>
+      const alfa = document.getElementById("c1");
+      const ctx = alfa.getContext("2d");
+
+      // Testa
+      ctx.beginPath();
+      ctx.arc(150, 150, 100, 0, Math.PI * 2, true);
+      ctx.fillStyle = "lightblue";
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      // Animazione Fulmine Occhio Sinistro
+      let lightningLeft = true;
+      setInterval(() => {
+        ctx.clearRect(90, 110, 40, 40);
+        ctx.beginPath();
+        ctx.arc(110, 130, 20, 0, Math.PI * 2, true);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+        // Pupilla Occhio Sinistro
+        ctx.beginPath();
+        ctx.arc(110, 130, 5, 0, Math.PI * 2, true);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+
+        if (lightningLeft) {
+          // Disegna il fulmine
+          ctx.beginPath();
+          ctx.moveTo(110, 120);
+          ctx.lineTo(105, 140);
+          ctx.lineTo(115, 140);
+          ctx.lineTo(110, 160);
+          ctx.lineTo(120, 140);
+          ctx.lineTo(110, 140);
+          ctx.closePath();
+          ctx.fillStyle = "yellow";
+          ctx.fill();
+        }
+
+        lightningLeft = !lightningLeft; // Alterna tra fulmine visibile e invisibile
+      }, 500);
+      // Occhio sinistro
+      ctx.beginPath();
+      ctx.arc(110, 130, 20, 0, Math.PI * 2, true);
+      ctx.fillStyle = "red";
+      ctx.fill();
+
+      // pupilla Occhio sinistro
+      ctx.beginPath();
+      ctx.arc(110, 130, 5, 0, Math.PI * 2, true);
+      ctx.fillStyle = "black";
+      ctx.fill();
+
+      //  Occhio destro
+      let lightning = true;
+      setInterval(() => {
+        ctx.clearRect(170, 110, 40, 40);
+        ctx.beginPath();
+        ctx.arc(190, 130, 20, 0, Math.PI * 2, true);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+        // Pupilla Occhio destro
+
+        ctx.beginPath();
+        ctx.arc(190, 130, 5, 0, Math.PI * 2, true);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+        if (lightning) {
+          // Disegna il fulmine
+          ctx.beginPath();
+          ctx.moveTo(190, 120);
+          ctx.lineTo(185, 140);
+          ctx.lineTo(195, 140);
+          ctx.lineTo(190, 160);
+          ctx.lineTo(200, 140);
+          ctx.lineTo(190, 140);
+          ctx.closePath();
+          ctx.fillStyle = "yellow";
+          ctx.fill();
+        }
+
+        lightning = !lightning; // Alterna tra fulmine visibile e invisibile
+      }, 500);
+      ctx.beginPath();
+      ctx.arc(190, 130, 20, 0, Math.PI * 2, true);
+      ctx.fillStyle = "red";
+      ctx.fill();
+
+      //  pupilla Occhio destro
+      ctx.beginPath();
+      ctx.arc(190, 130, 5, 0, Math.PI * 2, true);
+      ctx.fillStyle = "white";
+      ctx.fill();
+      // Bocca sotto (sorriso)
+      ctx.beginPath();
+      ctx.arc(150, 160, 50, 0, Math.PI, false);
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    </script>
   </body>
 </html>
