@@ -10,7 +10,7 @@ REGOLE GENERALI DA IMPLEMENTARE nel CSS:
   font-family: "Times New Roman", Times, serif;
   font-size: 30 px;
   text-align: center;
-  color: ;
+  color: red;
 }
 .P2 {
   font-family: Arial, Helvetica, sans-serif;
@@ -19,4 +19,9 @@ REGOLE GENERALI DA IMPLEMENTARE nel CSS:
   color: blue;
 }
 .P3 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  text-align: left;
+  color: green;
 }
