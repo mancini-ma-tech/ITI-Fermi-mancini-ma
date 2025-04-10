@@ -1,0 +1,18 @@
+/*
+REGOLE GENERALI DA IMPLEMENTARE nel CSS:
+    1. Font-family,
+    2. Font-size,
+    3. Text-align,
+    4. Color
+*/
+
+.P1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30 px;
+  text-align: center;
+}
+.P2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.P3 {
+}
