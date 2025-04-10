@@ -1,0 +1,8 @@
+h1 {
+  color: blue;
+}
+.gradient-block {
+  width: 100%;
+  height: 45px;
+  background: linear-gradient(to right, green, white, red);
+}
