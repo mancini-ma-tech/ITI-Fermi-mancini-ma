@@ -1,39 +1,47 @@
 // Wait for the DOM to fully load before executing the script
 document.addEventListener("DOMContentLoaded", function () {
-  // Retrieve the canvas element with ID 'c1'
-  var d = document.getElementById("c1");
-  if (d && d.getContext) {
-    var newCtx = d.getContext("2d"); // Obtain the 2D rendering context
-  } else {
-    console.error("Canvas element with ID 'c1' not found or not supported.");
-  }
-
   // Retrieve the canvas element and its 2D context
   const canvas = document.getElementById("c1");
-  const ctx = canvas ? canvas.getContext("2d") : null;
+  if (!canvas) {
+    console.error("Canvas element with ID 'c1' not found.");
+    return;
+  }
+  const ctx = canvas.getContext("2d");
 
   if (ctx) {
-    // Draw a black rectangle at (100, 100) with dimensions 50x50
+    // Linea ad L: inizio (20, 20) fine (70, 100)
+    ctx.beginPath();
+    ctx.moveTo(20, 20); // Punto iniziale
+    ctx.lineTo(20, 100); // Linea verticale
+    ctx.lineTo(70, 100); // Linea orizzontale
     ctx.strokeStyle = "black";
-    ctx.strokeRect(100, 100, 50, 50);
+    ctx.stroke();
 
-    // Draw another black rectangle at (200, 100) with dimensions 50x50
+    // Quadrato pieno: inizio (150, 90), lato 50
+    ctx.fillStyle = "green";
+    ctx.fillRect(150, 90, 50, 50);
+
+    // Quadrato vuoto: inizio (250, 90), lato 50
     ctx.strokeStyle = "black";
-    ctx.strokeRect(200, 100, 50, 50);
+    ctx.strokeRect(250, 90, 50, 50);
 
-    // Draw a red rectangle at (300, 100) with dimensions 50x50
-    ctx.strokeStyle = "red";
-    ctx.strokeRect(300, 100, 50, 50);
-
-    // Scale the canvas by a factor of 2 and draw a rectangle
-    ctx.scale(2, 2);
-    ctx.strokeRect(100, 100, 50, 50);
-
-    // Draw a blue line from the top-left corner to (500, 300)
-    ctx.moveTo(0, 0);
-    ctx.lineTo(500, 300);
+    // Cerchio: centro (150, 200), raggio 40
+    ctx.beginPath();
+    ctx.arc(150, 200, 40, 0, 2 * Math.PI); // Disegna il cerchio
     ctx.strokeStyle = "blue";
     ctx.stroke();
+
+    // Testo: scritta "Hello Canvas" a (50, 300)
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "purple";
+    ctx.fillText("Hello Canvas", 50, 300);
+
+    // Gradiente: rettangolo con gradiente lineare
+    const gradient = ctx.createLinearGradient(50, 350, 200, 350);
+    gradient.addColorStop(0, "red");
+    gradient.addColorStop(1, "yellow");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(50, 350, 150, 50);
   } else {
     console.error("Unable to retrieve canvas context.");
   }
