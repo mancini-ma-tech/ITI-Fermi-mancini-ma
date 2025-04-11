@@ -1,5 +1,11 @@
 #H1 {
   color: blue;
+  text-align: center;
 }
 #corpo {
+  background-color: lightblue;
+}
+#paragraph {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
 }
