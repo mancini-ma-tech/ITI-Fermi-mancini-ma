@@ -1,0 +1,19 @@
+#H1 {
+  background-color: lightblue;
+  text-align: right;
+}
+#H2 {
+  color: red;
+  background-color: lightgray;
+  padding: 50px;
+}
+#H3 {
+  background: linear-gradient(to left, yellow, blue);
+  padding: 5px;
+  text-align: right;
+}
+#paragraph {
+  text-align: right;
+  background-color: lightblue;
+  padding: 2px;
+}
