@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Avvio Bash in Windows",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "immissione del nome del programma, ad esempio ${workspaceFolder}/a.exe",
@@ -13,13 +13,9 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
-            "pipeTransport": {
-                "debuggerPath": "/usr/bin/gdb",
-                "pipeProgram": "${env:windir}\\system32\\bash.exe",
-                "pipeArgs": ["-c"],
-                "pipeCwd": ""
-            },
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/path/to/gdb",
             "setupCommands": [
                 {
                     "description": "Abilita la riformattazione per gdb",
@@ -36,3 +32,4 @@
 
     ]
 }
+
