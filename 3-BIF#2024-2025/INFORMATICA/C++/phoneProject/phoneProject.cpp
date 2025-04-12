@@ -45,6 +45,9 @@ Quindi usare le opzioni  del menu per:
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
+#include <sstream>
+#include <tuple> // Required for tie function
+#include <ctime> // Required for time and localtime functions
 
 using namespace std;
 
@@ -85,7 +88,9 @@ public:
         cin >> v.Ncell;
         cout << "Inserisci Anno di Nascita: ";
         cin >> v.Anno;
-        v.Eta = 2023 - v.Anno; // Calcolo età
+        time_t t = time(0);
+        tm *now = localtime(&t);
+        v.Eta = (now->tm_year + 1900) - v.Anno; // Calcolo età dinamico
         rubrica[count++] = v;
     }
 
