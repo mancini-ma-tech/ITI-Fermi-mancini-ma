@@ -40,9 +40,7 @@ Quindi usare le opzioni  del menu per:
     4. Salvare su file, uscire da menu e da programma;
     5. Ricaricare agenda da file.
 */
-
 #include <iostream>
-#include <vector>
 #include <string>
 #include <algorithm>
 #include <fstream>
@@ -63,17 +61,15 @@ struct Voce
 class AGENDA
 {
 private:
-    vector<Voce> rubrica;
+    Voce rubrica[10];
+    int count;
 
 public:
-    AGENDA()
-    {
-        rubrica.reserve(10);
-    }
+    AGENDA() : count(0) {}
 
     void addVoce()
     {
-        if (rubrica.size() >= 10)
+        if (count >= 10)
         {
             cout << "Rubrica piena!" << endl;
             return;
@@ -90,13 +86,14 @@ public:
         cout << "Inserisci Anno di Nascita: ";
         cin >> v.Anno;
         v.Eta = 2023 - v.Anno; // Calcolo età
-        rubrica.push_back(v);
+        rubrica[count++] = v;
     }
 
     void stampa() const
     {
-        for (const auto &v : rubrica)
+        for (int i = 0; i < count; ++i)
         {
+            const Voce &v = rubrica[i];
             cout << v.Cognome << " " << v.Nome << " " << v.Nfisso << " " << v.Ncell
                  << " " << v.Anno << " " << v.Eta << endl;
         }
@@ -104,12 +101,22 @@ public:
 
     void delVoce(const string &cognome, const string &nome)
     {
-        auto it = remove_if(rubrica.begin(), rubrica.end(),
-                            [&](const Voce &v)
-                            { return v.Cognome == cognome && v.Nome == nome; });
-        if (it != rubrica.end())
+        int index = -1;
+        for (int i = 0; i < count; ++i)
         {
-            rubrica.erase(it, rubrica.end());
+            if (rubrica[i].Cognome == cognome && rubrica[i].Nome == nome)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1)
+        {
+            for (int i = index; i < count - 1; ++i)
+            {
+                rubrica[i] = rubrica[i + 1];
+            }
+            --count;
             cout << "Voce cancellata." << endl;
         }
         else
@@ -120,19 +127,20 @@ public:
 
     void ordina()
     {
-        sort(rubrica.begin(), rubrica.end(), [](const Voce &a, const Voce &b)
+        sort(rubrica, rubrica + count, [](const Voce &a, const Voce &b)
              { return tie(a.Cognome, a.Nome) < tie(b.Cognome, b.Nome); });
         cout << "Agenda ordinata." << endl;
     }
 
     int staVoce(const string &cognome, const string &nome) const
     {
-        for (size_t i = 0; i < rubrica.size(); ++i)
+        for (int i = 0; i < count; ++i)
         {
             if (rubrica[i].Cognome == cognome && rubrica[i].Nome == nome)
             {
-                cout << rubrica[i].Cognome << " " << rubrica[i].Nome << " " << rubrica[i].Nfisso
-                     << " " << rubrica[i].Ncell << " " << rubrica[i].Anno << " " << rubrica[i].Eta << endl;
+                const Voce &v = rubrica[i];
+                cout << v.Cognome << " " << v.Nome << " " << v.Nfisso
+                     << " " << v.Ncell << " " << v.Anno << " " << v.Eta << endl;
                 return i;
             }
         }
@@ -143,12 +151,12 @@ public:
     double upEta(int annoCorrente)
     {
         int sommaEta = 0;
-        for (auto &v : rubrica)
+        for (int i = 0; i < count; ++i)
         {
-            v.Eta = annoCorrente - v.Anno;
-            sommaEta += v.Eta;
+            rubrica[i].Eta = annoCorrente - rubrica[i].Anno;
+            sommaEta += rubrica[i].Eta;
         }
-        return rubrica.empty() ? 0 : static_cast<double>(sommaEta) / rubrica.size();
+        return count == 0 ? 0 : static_cast<double>(sommaEta) / count;
     }
 
     void Salva(const string &filename) const
@@ -159,8 +167,9 @@ public:
             cout << "Errore nell'apertura del file." << endl;
             return;
         }
-        for (const auto &v : rubrica)
+        for (int i = 0; i < count; ++i)
         {
+            const Voce &v = rubrica[i];
             file << v.Cognome << "," << v.Nome << "," << v.Nfisso << "," << v.Ncell << ","
                  << v.Anno << "," << v.Eta << endl;
         }
@@ -175,15 +184,15 @@ public:
             cout << "Errore nell'apertura del file." << endl;
             return;
         }
-        rubrica.clear();
-        Voce v;
+        count = 0;
         string line;
-        while (getline(file, line))
+        while (getline(file, line) && count < 10)
         {
             replace(line.begin(), line.end(), ',', ' ');
             istringstream iss(line);
+            Voce v;
             iss >> v.Cognome >> v.Nome >> v.Nfisso >> v.Ncell >> v.Anno >> v.Eta;
-            rubrica.push_back(v);
+            rubrica[count++] = v;
         }
         cout << "Agenda caricata da file." << endl;
     }
