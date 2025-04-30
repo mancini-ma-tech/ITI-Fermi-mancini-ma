@@ -28,7 +28,7 @@ nomi.reverse()
 print("Lista in ordine inverso: ", nomi)
 
 # Testo di esempio
-testo = "Il quick brown fox jumps over the lazy dog"
+testo = "The quick brown fox jumps over the lazy dog"
 
 # Conversione in maiuscolo
 testo_maiuscolo = testo.upper()
