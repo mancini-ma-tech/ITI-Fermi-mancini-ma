@@ -18,3 +18,11 @@ print("Primi tre nomi: ", primi_tre)
 # Estrazione degli ultimi tre nomi
 ultimi_tre = nomi[-3:]
 print("Ultimi tre nomi: ", ultimi_tre)
+
+# Ordinamento alfabetico della lista
+nomi.sort()
+print("Lista ordinata alfabeticamente: ", nomi)
+
+# Inversione dell'ordine della lista
+nomi.reverse()
+print("Lista in ordine inverso: ", nomi)
