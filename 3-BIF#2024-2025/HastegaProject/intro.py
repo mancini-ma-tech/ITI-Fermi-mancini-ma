@@ -1,3 +1,6 @@
+'''Primo esercizio in Python dell'Hastega Project'''
+
+
 print("Hello, world!!!")
 età = 17
 nome = "Massimiliano"
