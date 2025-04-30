@@ -26,3 +26,18 @@ print("Lista ordinata alfabeticamente: ", nomi)
 # Inversione dell'ordine della lista
 nomi.reverse()
 print("Lista in ordine inverso: ", nomi)
+
+# Testo di esempio
+testo = "Il quick brown fox jumps over the lazy dog"
+
+# Conversione in maiuscolo
+testo_maiuscolo = testo.upper()
+print("Testo in maiuscolo: ", testo_maiuscolo)
+
+# Trova la posizione di "fox"
+posizione_fox = testo.find("fox")
+print("Posizione di 'fox': ", posizione_fox)
+
+# Sostituzione di "lazy" con "Active"
+testo_modificato = testo.replace("lazy", "Active")
+print("Testo modificato: ", testo_modificato)
