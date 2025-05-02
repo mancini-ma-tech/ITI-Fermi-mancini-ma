@@ -39,7 +39,7 @@ Quindi usare le opzioni  del menu per:
     3. Ordinare agenda, Stampare agenda;
     4. Salvare su file, uscire da menu e da programma;
     5. Ricaricare agenda da file.
-    */ \
+    */
 #include<iostream>
 #include <string>
 #include <fstream>
@@ -57,6 +57,8 @@ struct Voce
     int Anno;
     int Eta;
 };
+
+// Duplicate class definition removed.
 
 int main()
 {
