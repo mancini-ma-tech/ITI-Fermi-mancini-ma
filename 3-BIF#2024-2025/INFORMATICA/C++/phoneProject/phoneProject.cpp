@@ -1,4 +1,7 @@
-/*C++: PROGETTO  AGENDA TELEFONICA
+/*
+
+C++: PROGETTO  AGENDA TELEFONICA
+
 Definisci in C++ una classe AGENDA che gestisce una rubrica con attributi:
 un vettore di struct (lungo 10) con i seguenti campi:
     - string Cognome;
@@ -14,21 +17,21 @@ Vi sono i seguenti metodi (offline) oltre al costruttore:
     - delVoce                   cancella una voce dall’agenda con parametri cognome e nome
     - ordina                    ordina l’agenda per cognome-nome  in modo crescente
     - staVoce                   stampa a video la voce cercata (cognome e nome) e restituisce la sua
-                                posizione (se non esiste allora -1)
+                                posizione (se non esiste allora -1);
     - upEta:                    aggiorna il campo età di tutte le voci in agenda, usando il parametro
-                                formale anno e restituisce la media dell'età
-    - Salva                     Salva agenda su file di testo csv (Backup)
-    - Carica                    carica agenda file da file di testo csv (Restore)
+                                formale anno e restituisce la media dell'età;
+    - Salva                     Salva agenda su file di testo csv (Backup);
+    - Carica                    carica agenda file da file di testo csv (Restore);
 
-Nel  Main, dopo avere istanziato (in modo dinamico) un oggetto A ella classe AGENDA, lanciare un menù
+Nel  Main, dopo avere istanziato (in modo dinamico) un oggetto A della classe AGENDA, lanciare un menù
 con le seguenti opzioni
 
 1.    Aggiungi voce
 2.    Cancella  voce
 3.    Stampa voce
 4.    Ordina agenda
-5.    Stampa agenda
-6.     Aggiorna Età
+5.    Stampa intera agenda
+6.    Aggiorna Età
 7.    Backup
 8.    Restore
 9.    Esci
@@ -39,187 +42,267 @@ Quindi usare le opzioni  del menu per:
     3. Ordinare agenda, Stampare agenda;
     4. Salvare su file, uscire da menu e da programma;
     5. Ricaricare agenda da file.
-*/
+    */
+
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <iomanip>
 #include <sstream>
-#include <tuple>
-#include <algorithm>
 #include <ctime>
 
 using namespace std;
 
 struct Voce
 {
-    string Cognome; // Cognome della persona
-    string Nome;    // Nome della persona
-    string Nfisso;  // Numero di telefono fisso
-    string Ncell;   // Numero di telefono cellulare
-    int Anno;       // Anno di nascita
-    int Eta;        // Età calcolata
+    string Cognome;
+    string Nome;
+    string Nfisso;
+    string Ncell;
+    int Anno;
+    int Eta;
 };
 
-// Classe AGENDA per gestire una rubrica telefonica
 class AGENDA
 {
 private:
-    Voce rubrica[10]; // Array di massimo 10 voci
-    int count;        // Contatore per il numero di voci attualmente presenti
+    Voce voci[10];
+    int count;
 
 public:
-    // Costruttore: inizializza il contatore a 0
     AGENDA() : count(0) {}
 
-    // Metodo per aggiungere una voce all'agenda
     void addVoce()
     {
-        if (count >= 10) // Controlla se l'agenda è piena
+        if (count >= 10)
         {
-            cout << "Rubrica piena!" << endl;
+            cout << "Agenda piena!" << endl;
             return;
         }
-        Voce v;
-        // Lettura dei dati da tastiera
         cout << "Inserisci Cognome: ";
-        cin >> v.Cognome;
+        cin >> voci[count].Cognome;
         cout << "Inserisci Nome: ";
-        cin >> v.Nome;
+        cin >> voci[count].Nome;
         cout << "Inserisci Numero Fisso: ";
-        cin >> v.Nfisso;
+        cin >> voci[count].Nfisso;
         cout << "Inserisci Numero Cellulare: ";
-        cin >> v.Ncell;
+        cin >> voci[count].Ncell;
         cout << "Inserisci Anno di Nascita: ";
-        cin >> v.Anno;
-
-        // Calcolo dinamico dell'età basato sull'anno corrente
+        cin >> voci[count].Anno;
         time_t t = time(0);
         tm *now = localtime(&t);
-        v.Eta = (now->tm_year + 1900) - v.Anno;
-
-        rubrica[count++] = v; // Aggiunge la voce all'array e incrementa il contatore
+        voci[count].Eta = now->tm_year + 1900 - voci[count].Anno;
+        count++;
     }
 
-    // Metodo per stampare tutte le voci dell'agenda
     void stampa() const
     {
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < count; i++)
         {
-            const Voce &v = rubrica[i];
-            // Stampa i dettagli di ogni voce
-            cout << v.Cognome << " " << v.Nome << " " << v.Nfisso << " " << v.Ncell
-                 << " " << v.Anno << " " << v.Eta << endl;
+            cout << i + 1 << ". " << voci[i].Cognome << " " << voci[i].Nome
+                 << ", Fisso: " << voci[i].Nfisso
+                 << ", Cell: " << voci[i].Ncell
+                 << ", Anno: " << voci[i].Anno
+                 << ", Eta: " << voci[i].Eta << endl;
         }
+        system("PAUSE");
     }
 
-    // Metodo per cancellare una voce dall'agenda dato cognome e nome
     void delVoce(const string &cognome, const string &nome)
     {
-        int index = -1;
-        // Cerca la voce corrispondente
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < count; i++)
         {
-            if (rubrica[i].Cognome == cognome && rubrica[i].Nome == nome)
+            if (voci[i].Cognome == cognome && voci[i].Nome == nome)
             {
-                index = i;
-                break;
-            }
-        }
-        if (index != -1) // Se la voce è trovata
-        {
-            // Sposta le voci successive per riempire il "buco"
-            for (int i = index; i < count - 1; ++i)
-            {
-                rubrica[i] = rubrica[i + 1];
-            }
-            --count; // Decrementa il contatore
-            cout << "Voce cancellata." << endl;
-        }
-        else
-        {
-            cout << "Voce non trovata." << endl;
-        }
-    }
-
-    // Metodo per ordinare l'agenda in base a cognome e nome
-    void ordina()
-    {
-        sort(rubrica, rubrica + count, [](const Voce &a, const Voce &b)
-             { return tie(a.Cognome, a.Nome) < tie(b.Cognome, b.Nome); });
-        cout << "Agenda ordinata." << endl;
-    }
-
-    // Metodo per cercare una voce e restituire la posizione
-    int staVoce(const string &cognome, const string &nome) const
-    {
-        for (int i = 0; i < count; ++i)
-        {
-            if (rubrica[i].Cognome == cognome && rubrica[i].Nome == nome)
-            {
-                const Voce &v = rubrica[i];
-                // Stampa i dettagli della voce trovata
-                cout << v.Cognome << " " << v.Nome << " " << v.Nfisso
-                     << " " << v.Ncell << " " << v.Anno << " " << v.Eta << endl;
-                return i; // Restituisce la posizione
+                for (int j = i; j < count - 1; j++)
+                {
+                    voci[j] = voci[j + 1];
+                }
+                count--;
+                cout << "Voce eliminata." << endl;
+                return;
             }
         }
         cout << "Voce non trovata." << endl;
-        return -1; // Restituisce -1 se non trovata
     }
 
-    // Metodo per aggiornare l'età di tutte le voci e calcolare la media
+    void ordina()
+    {
+        for (int i = 0; i < count - 1; i++)
+        {
+            for (int j = i + 1; j < count; j++)
+            {
+                if (voci[i].Cognome > voci[j].Cognome ||
+                    (voci[i].Cognome == voci[j].Cognome && voci[i].Nome > voci[j].Nome))
+                {
+                    swap(voci[i], voci[j]);
+                }
+            }
+        }
+        cout << "Agenda ordinata." << endl;
+    }
+
+    int staVoce(const string &cognome, const string &nome) const
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (voci[i].Cognome == cognome && voci[i].Nome == nome)
+            {
+                cout << "Voce trovata: " << voci[i].Cognome << " " << voci[i].Nome
+                     << ", Fisso: " << voci[i].Nfisso
+                     << ", Cell: " << voci[i].Ncell
+                     << ", Anno: " << voci[i].Anno
+                     << ", Eta: " << voci[i].Eta << endl;
+                return i;
+            }
+        }
+        cout << "Voce non trovata." << endl;
+        return -1;
+    }
+
     double upEta(int annoCorrente)
     {
-        int sommaEta = 0;
-        for (int i = 0; i < count; ++i)
+        double sommaEta = 0;
+        for (int i = 0; i < count; i++)
         {
-            rubrica[i].Eta = annoCorrente - rubrica[i].Anno; // Aggiorna l'età
-            sommaEta += rubrica[i].Eta;                      // Somma le età
+            voci[i].Eta = annoCorrente - voci[i].Anno;
+            sommaEta += voci[i].Eta;
         }
-        // Restituisce la media delle età
-        return count == 0 ? 0 : static_cast<double>(sommaEta) / count;
+        return count > 0 ? sommaEta / count : 0;
     }
 
-    // Metodo per salvare l'agenda su un file CSV
     void Salva(const string &filename) const
     {
+        if (filename.empty())
+        {
+            cout << "Nome file non valido." << endl;
+            return;
+        }
         ofstream file(filename);
-        if (!file) // Controlla se il file è stato aperto correttamente
+        if (!file)
         {
             cout << "Errore nell'apertura del file." << endl;
             return;
         }
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < count; i++)
         {
-            const Voce &v = rubrica[i];
-            // Scrive i dati della voce nel file separati da virgole
-            file << v.Cognome << "," << v.Nome << "," << v.Nfisso << "," << v.Ncell << ","
-                 << v.Anno << "," << v.Eta << endl;
+            file << voci[i].Cognome << "," << voci[i].Nome << ","
+                 << voci[i].Nfisso << "," << voci[i].Ncell << ","
+                 << voci[i].Anno << "," << voci[i].Eta << endl;
         }
+        file.close();
         cout << "Agenda salvata su file." << endl;
     }
 
-    // Metodo per caricare l'agenda da un file CSV
     void Carica(const string &filename)
     {
         ifstream file(filename);
-        if (!file) // Controlla se il file è stato aperto correttamente
+        if (!file)
         {
             cout << "Errore nell'apertura del file." << endl;
             return;
         }
-        count = 0; // Resetta il contatore
+        count = 0;
         string line;
-        while (getline(file, line) && count < 10) // Legge ogni riga del file
+        while (getline(file, line) && count < 10)
         {
-            replace(line.begin(), line.end(), ',', ' '); // Sostituisce le virgole con spazi
-            istringstream iss(line);
-            Voce v;
-            // Legge i dati della voce
-            iss >> v.Cognome >> v.Nome >> v.Nfisso >> v.Ncell >> v.Anno >> v.Eta;
-            rubrica[count++] = v; // Aggiunge la voce all'agenda
+            stringstream ss(line);
+            getline(ss, voci[count].Cognome, ',');
+            getline(ss, voci[count].Nome, ',');
+            getline(ss, voci[count].Nfisso, ',');
+            getline(ss, voci[count].Ncell, ',');
+            ss >> voci[count].Anno;
+            ss.ignore();
+            ss >> voci[count].Eta;
+            count++;
         }
+        file.close();
         cout << "Agenda caricata da file." << endl;
     }
 };
+
+int main()
+{
+    AGENDA *agenda = new AGENDA();
+    int scelta;
+    do
+    {
+        cout << "\nMenu:\n"
+             << "1. Aggiungi voce\n"
+             << "2. Cancella voce\n"
+             << "3. Stampa voce\n"
+             << "4. Ordina agenda\n"
+             << "5. Stampa agenda\n"
+             << "6. Aggiorna Eta\n"
+             << "7. Backup\n"
+             << "8. Restore\n"
+             << "9. Esci\n"
+             << "Scelta: ";
+        cin >> scelta;
+
+        switch (scelta)
+        {
+        case 1:
+            agenda->addVoce();
+            break;
+        case 2:
+        {
+            string cognome, nome;
+            cout << "Inserisci Cognome: ";
+            cin >> cognome;
+            cout << "Inserisci Nome: ";
+            cin >> nome;
+            agenda->delVoce(cognome, nome);
+            break;
+        }
+        case 3:
+        {
+            string cognome, nome;
+            cout << "Inserisci Cognome: ";
+            cin >> cognome;
+            cout << "Inserisci Nome: ";
+            cin >> nome;
+            agenda->staVoce(cognome, nome);
+            break;
+        }
+        case 4:
+            agenda->ordina();
+            break;
+        case 5:
+            agenda->stampa();
+            break;
+        case 6:
+        {
+            int annoCorrente;
+            cout << "Inserisci anno corrente: ";
+            cin >> annoCorrente;
+            double mediaEta = agenda->upEta(annoCorrente);
+            cout << "Eta media aggiornata: " << mediaEta << endl;
+            break;
+        }
+        case 7:
+        {
+            string filename;
+            cout << "Inserisci nome file per il backup: ";
+            cin >> filename;
+            agenda->Salva(filename);
+            break;
+        }
+        case 8:
+        {
+            string filename;
+            cout << "Inserisci nome file per il restore: ";
+            cin >> filename;
+            agenda->Carica(filename);
+            break;
+        }
+        case 9:
+            cout << "Uscita dal programma." << endl;
+            break;
+        default:
+            cout << "Scelta non valida." << endl;
+        }
+    } while (scelta != 9);
+
+    delete agenda;
+    return 0;
+}
