@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lampadina</title>
+    <style>
+      #img1 {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Alterna la lampadina</h1>
+    <img id="img1" src="..//MEDIA/lampa_off.jpg" alt="Lampadina spenta" />
+    <br />
+    <button onclick="accendi()">Accendi</button>
+    <button onclick="spegni()">Spegni</button>
+
+    <script>
+      function accendi() {
+        document.getElementById("img2").src = "..//MEDIA//lampa_on.jpg";
+      }
+
+      function spegni() {
+        document.getElementById("img1").src = "..//MEDIA/lampa_off.jpg";
+      }
+    </script>
+  </body>
+</html>

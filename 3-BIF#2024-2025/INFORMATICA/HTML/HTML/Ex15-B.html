@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disegna Faccia</title>
+  </head>
+  <body>
+    <canvas
+      id="faceCanvas"
+      width="400"
+      height="400"
+      style="border: 1px solid #000"
+    ></canvas>
+    <script>
+      const canvas = document.getElementById("faceCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Disegna il viso (cerchio grande)
+      ctx.beginPath();
+      ctx.arc(200, 200, 150, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Disegna gli occhi (due cerchi)
+      // Occhio sinistro
+      ctx.beginPath();
+      ctx.arc(150, 150, 20, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Occhio destro
+      ctx.beginPath();
+      ctx.arc(250, 150, 20, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Disegna il naso (linea verticale)
+      ctx.beginPath();
+      ctx.moveTo(200, 170);
+      ctx.lineTo(200, 230);
+      ctx.stroke();
+
+      // Disegna la bocca (sorriso)
+      ctx.beginPath();
+      ctx.arc(200, 250, 50, 0, Math.PI, false); // Semicerchio per il sorriso
+      ctx.stroke();
+    </script>
+  </body>
+</html>
