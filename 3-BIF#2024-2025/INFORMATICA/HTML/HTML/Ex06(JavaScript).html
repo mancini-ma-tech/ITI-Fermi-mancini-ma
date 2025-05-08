@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Tipi Dinamici</title>
+  </head>
+  <body>
+    <h2>JavaScript ha tipi dato dinamici</h2>
+    <p>Ovvero la stessa variabile può contenere tipi diversi</p>
+
+    <p id="es1"></p>
+    <p id="es2"></p>
+
+    <script>
+      var x; // X non è definito
+      x = 5; // ora è un numero
+      document.getElementById("es1").innerHTML =
+        "Il valore di x è: " + x + " (tipo: " + typeof x + ")";
+
+      x = "John"; // ora è una stringa
+      document.getElementById("es2").innerHTML =
+        "Il valore di x è: " + x + " (tipo: " + typeof x + ")";
+    </script>
+  </body>
+</html>
