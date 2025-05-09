@@ -1,0 +1,53 @@
+<!--
+Crea
+Se a una classe box con bordo e sfondo
+leggi  un numero N
+quindi con uno script crea il contenitore
+Creiamo il contenitore
+    document.write('<div class="box">');
+
+stampa nel contenitore su righe diverse 
+- i numeri da 1 ad N 
+le potenze di N all k per k che va da 0 a 5
+Chiudi il contenitore
+
+Se  x< y stam
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex12</title>
+    <style>
+      .box {
+        border: 2px solid black;
+        background-color: lightgray;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Leggi un numero N
+      let N = parseInt(prompt("Inserisci un numero N:"));
+
+      // Creiamo il contenitore
+      document.write('<div class="box">');
+
+      // Stampa i numeri da 1 ad N
+      for (let i = 1; i <= N; i++) {
+        document.write(i + "<br>");
+      }
+
+      // Stampa le potenze di N all'k per k che va da 0 a 5
+      for (let k = 0; k <= 5; k++) {
+        document.write(N + " ^ " + k + " = " + Math.pow(N, k) + "<br>");
+      }
+
+      // Chiudi il contenitore
+      document.write("</div>");
+    </script>
+  </body>
+</html>
