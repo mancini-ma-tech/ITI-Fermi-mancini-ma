@@ -1,0 +1,75 @@
+<!--
+Ex13-C.html
+Crea un box con la bandiera Italiana
+ed un box rosso in cui scrivere i numeri interi da X ed Y
+con X ed Y letti da tastiera
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bandiera Italiana e Numeri</title>
+    <style>
+      .italian-flag {
+        display: flex;
+        width: 300px;
+        height: 150px;
+        border: 1px solid black;
+      }
+      .italian-flag div {
+        flex: 1;
+      }
+      .green {
+        background-color: green;
+      }
+      .white {
+        background-color: white;
+      }
+      .red {
+        background-color: red;
+      }
+      .number-box {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: red;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="italian-flag">
+      <div class="green"></div>
+      <div class="white"></div>
+      <div class="red"></div>
+    </div>
+
+    <div>
+      <label for="start">X (start): </label>
+      <input type="number" id="start" name="start" />
+      <label for="end">Y (end): </label>
+      <input type="number" id="end" name="end" />
+      <button onclick="generateNumbers()">Generate</button>
+    </div>
+
+    <div id="number-box" class="number-box"></div>
+
+    <script>
+      function generateNumbers() {
+        const start = parseInt(document.getElementById("start").value);
+        const end = parseInt(document.getElementById("end").value);
+        const numberBox = document.getElementById("number-box");
+        numberBox.innerHTML = "";
+
+        if (!isNaN(start) && !isNaN(end) && start <= end) {
+          for (let i = start; i <= end; i++) {
+            numberBox.innerHTML += i + "<br>";
+          }
+        } else {
+          numberBox.innerHTML = "Please enter valid numbers with X <= Y.";
+        }
+      }
+    </script>
+  </body>
+</html>

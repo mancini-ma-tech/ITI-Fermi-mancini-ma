@@ -1,14 +1,60 @@
+<!--
+Ex13-B.html
+Definisci in div un box con la bandiera Francese, ed in un ID un box verde
+Letti due numeri interi X ed Y stampa su righe diverse i numeri da X ad Y crescenti
+-->
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ex13-B.html</title>
-    <link rel="stylesheet" type="text/css" href="..//CSS/Ex13-B.css" />
+    <title>Ex13-B</title>
+    <style>
+      .french-flag {
+        display: flex;
+        width: 150px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      .french-flag div {
+        flex: 1;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .white {
+        background-color: white;
+      }
+      .red {
+        background-color: red;
+      }
+      #green-box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        margin-top: 20px;
+      }
+    </style>
   </head>
-  <body id="corpo">
-    <p>Applico proprietà CSS al Body, H1 e p</p>
-    <h1 id="H1">Ecco come viene H1</h1>
-    <p id="paragraph">Ecco un paragrafo</p>
-    <h1 id="H1">Un altro H1</h1>
+  <body>
+    <div class="french-flag">
+      <div class="blue"></div>
+      <div class="white"></div>
+      <div class="red"></div>
+    </div>
+    <div id="green-box"></div>
+    <script>
+      const x = parseInt(prompt("Enter the first number (X):"));
+      const y = parseInt(prompt("Enter the second number (Y):"));
+      if (!isNaN(x) && !isNaN(y) && x <= y) {
+        for (let i = x; i <= y; i++) {
+          document.write(i + "<br>");
+        }
+      } else {
+        document.write(
+          "Invalid input. Please ensure X and Y are integers and X <= Y."
+        );
+      }
+    </script>
   </body>
 </html>
