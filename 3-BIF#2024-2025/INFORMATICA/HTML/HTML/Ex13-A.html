@@ -1,0 +1,60 @@
+<!--
+Ex 13-A.html
+Usando HTML, CSS e JavaScript, leggi 2 numeri interi X ed Y, crea un BOX con un link ad un koala
+Quindi se X < Y stampa sulla stessa riga i numeri da X ad Y
+altrimenti stampali su righe diverse.
+
+QUINDI:
+    1. Crea un file HTML con un titolo "Numeri e Koala"
+    2. Crea un box con un link ad un koala
+    3. Crea una variabile X e Y
+    4. Se X < Y stampa i numeri da X a Y sulla stessa riga
+    5. Altrimenti stampa i numeri su righe diverse
+    6. Stampa il risultato
+    7. Stampa il risultato in un box
+    8. Stampa il risultato in un box con un bordo
+    9. Stampa il risultato in un box con un bordo e un padding
+    10. Stampa il risultato in un box con un bordo, un padding e un margine
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numeri e Koala</title>
+    <style>
+      .box {
+        border: 2px solid black;
+        padding: 10px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Numeri e Koala</h1>
+    <div class="box">
+      <a href="https://en.wikipedia.org/wiki/Koala" target="_blank"
+        >Link to a Koala</a
+      >
+    </div>
+    <div class="box" id="resultBox"></div>
+    <script>
+      const X = parseInt(prompt("Enter the first number (X):"));
+      const Y = parseInt(prompt("Enter the second number (Y):"));
+      const resultBox = document.getElementById("resultBox");
+
+      let result = "";
+      if (X < Y) {
+        for (let i = X; i <= Y; i++) {
+          result += i + " ";
+        }
+      } else {
+        for (let i = X; i >= Y; i--) {
+          result += i + "<br>";
+        }
+      }
+
+      resultBox.innerHTML = result;
+    </script>
+  </body>
+</html>
