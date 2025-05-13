@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Example</title>
+    <script>
+      function visualizza() {
+        const cognome = document.getElementById("COG").value;
+        const nome = document.getElementById("NOM").value;
+        alert(`Cognome: ${cognome}\nNome: ${nome}`);
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="COG">Cognome:</label>
+      <input type="text" id="COG" name="COG" /><br /><br />
+      <label for="NOM">Nome:</label>
+      <input type="text" id="NOM" name="NOM" /><br /><br />
+      <button type="button" onclick="visualizza()">Cliccami</button>
+    </form>
+  </body>
+</html>

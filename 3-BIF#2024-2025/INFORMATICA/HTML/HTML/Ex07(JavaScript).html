@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambia Style Font e Testo</title>
+  </head>
+  <body>
+    <script>
+      function resetFontSize() {
+        document.getElementById("pippo").style.fontSize = "";
+      }
+
+      function resetStyle() {
+        document.getElementById("pippo").style.cssText = "";
+      }
+    </script>
+
+    <button type="button" onclick="resetFontSize()">
+      Ripristina Dimensione
+    </button>
+    <button type="button" onclick="resetStyle()">Ripristina Stile</button>
+
+    <style>
+      p {
+        font-size: 20px;
+      }
+    </style>
+    <p id="pippo">Questo è un testo di esempio.</p>
+
+    <button
+      type="button"
+      onclick='document.getElementById("pippo").style.fontSize = "50px";'
+    >
+      Cambia Dimensione
+    </button>
+
+    <button
+      type="button"
+      onclick='document.getElementById("pippo").style.cssText = "font-size: 50px; color: red; font-family: Montserrat, sans-serif;"'
+    >
+      Cambia Dimensione e Colore
+    </button>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Text Color</title>
+    <style>
+      #PIP {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      function F1() {
+        document.getElementById("PIP").style.color = "red";
+      }
+
+      function F2() {
+        document.getElementById("PIP").style.color = "green";
+      }
+    </script>
+  </head>
+  <body>
+    <p id="PIP">This is a sample text.</p>
+    <button onclick="F1()">Change to Red</button>
+    <button onclick="F2()">Change to Green</button>
+  </body>
+</html>

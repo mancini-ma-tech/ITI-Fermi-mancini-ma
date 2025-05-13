@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex11</title>
+    <style>
+      .bordoblu {
+        border: 2px solid blue;
+        padding: 10px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bordoblu">
+      <label for="num1">Numero 1:</label>
+      <input type="number" id="num1" />
+      <br />
+      <label for="num2">Numero 2:</label>
+      <input type="number" id="num2" />
+      <br />
+      <button onclick="confrontaNumeri()">Confronta</button>
+      <p id="risultato"></p>
+    </div>
+
+    <script>
+      function confrontaNumeri() {
+        const num1 = parseInt(document.getElementById("num1").value);
+        const num2 = parseInt(document.getElementById("num2").value);
+        const risultato = document.getElementById("risultato");
+
+        if (num1 < num2) {
+          risultato.textContent = `${num1} ${num2}`;
+        } else {
+          risultato.innerHTML = `${num1}<br>${num2}`;
+        }
+      }
+    </script>
+  </body>
+</html>
