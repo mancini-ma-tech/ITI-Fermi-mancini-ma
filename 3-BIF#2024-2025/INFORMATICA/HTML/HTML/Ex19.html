@@ -46,24 +46,38 @@
   <body>
     <h1>Riproduzione Audio</h1>
     <button onclick="playAudio1()">
-      🎵 Big Poppa Notorious B.I.G. (2005 Remaster, Explicit V.)
+      🎵 Big Poppa, The Notorious B.I.G. (2005 Remaster, Explicit V.)
     </button>
-    <button onclick="playAudio2()">🎸 Suona Pink Floyd</button>
+    <button onclick="playAudio2()">🎸 Hypnotize, The Notorious B.I.G.</button>
+    <button onclick="playAudio3()">🎤 Shook Ones, Mobb Deep</button>
 
     <script>
       const audio1 = new Audio(".././MEDIA/BigPoppa.mp3");
       const audio2 = new Audio(".././MEDIA/Hypnotize.mp3");
+      const audio3 = new Audio(".././MEDIA/ShookOnes.mp3");
 
       function playAudio1() {
-        audio2.pause(); // Metto in pausa l'altro audio
-        audio2.currentTime = 0; // Riporto all'inizio
-        audio1.play(); // Riproduco il primo audio
+        audio2.pause();
+        audio2.currentTime = 0;
+        audio3.pause();
+        audio3.currentTime = 0;
+        audio1.play();
       }
 
       function playAudio2() {
-        audio1.pause(); // Metto in pausa l'altro audio
-        audio1.currentTime = 0; // Riporto all'inizio
-        audio2.play(); // Riproduco il secondo audio
+        audio1.pause();
+        audio1.currentTime = 0;
+        audio3.pause();
+        audio3.currentTime = 0;
+        audio2.play();
+      }
+
+      function playAudio3() {
+        audio1.pause();
+        audio1.currentTime = 0;
+        audio2.pause();
+        audio2.currentTime = 0;
+        audio3.play();
       }
     </script>
   </body>
