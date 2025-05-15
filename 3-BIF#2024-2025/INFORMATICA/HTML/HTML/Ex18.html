@@ -1,11 +1,98 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ex18.html</title>
+    <title>Generatore di Numeri Casuali</title>
     <link rel="stylesheet" type="text/css" href="..//CSS/Ex18.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #4a90e2;
+      }
+      p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .numbers {
+        font-size: 18px;
+        color: #333;
+        margin-top: 20px;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+      input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4a90e2;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #357abd;
+      }
+    </style>
   </head>
   <body>
-    <div></div>
+    <div class="container">
+      <h1>Generatore di Numeri Casuali</h1>
+      <p>Inserisci un numero per generare numeri casuali tra 1 e 90.</p>
+      <input type="number" id="numInput" placeholder="Inserisci un numero" />
+      <button onclick="generateNumbers()">Genera Numeri</button>
+      <div class="numbers" id="numbersOutput"></div>
+    </div>
+    <script>
+      function generateNumbers() {
+        const numInput = document.getElementById("numInput");
+        const numbersOutput = document.getElementById("numbersOutput");
+        const N = parseInt(numInput.value);
+
+        numbersOutput.innerHTML = ""; // Pulisce il contenuto precedente
+
+        if (!isNaN(N) && N > 0) {
+          for (let i = 0; i < N; i++) {
+            const randomNum = Math.floor(Math.random() * 90) + 1;
+            const numberElement = document.createElement("p");
+            numberElement.textContent = `Numero ${i + 1}: ${randomNum}`;
+            numbersOutput.appendChild(numberElement);
+          }
+        } else {
+          numbersOutput.innerHTML =
+            '<span class="error">Input non valido. Inserisci un numero valido.</span>';
+        }
+      }
+    </script>
   </body>
 </html>
