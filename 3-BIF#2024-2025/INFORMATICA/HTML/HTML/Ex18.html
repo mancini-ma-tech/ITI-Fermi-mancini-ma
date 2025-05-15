@@ -93,6 +93,32 @@
             '<span class="error">Input non valido. Inserisci un numero valido.</span>';
         }
       }
+      function generateNumbers() {
+        const numInput = document.getElementById("numInput");
+        const numbersOutput = document.getElementById("numbersOutput");
+        const N = parseInt(numInput.value);
+
+        numbersOutput.innerHTML = ""; // Pulisce il contenuto precedente
+
+        if (!isNaN(N) && N > 0) {
+          for (let i = 0; i < N; i++) {
+            const randomNum = Math.floor(Math.random() * 90) + 1;
+            const numberElement = document.createElement("p");
+            numberElement.textContent = `Numero ${i + 1}: ${randomNum}`;
+            numberElement.style.opacity = 0; // Imposta l'opacità iniziale
+            numbersOutput.appendChild(numberElement);
+
+            // Aggiunge un'animazione di fade-in
+            setTimeout(() => {
+              numberElement.style.transition = "opacity 0.5s";
+              numberElement.style.opacity = 1;
+            }, i * 100); // Ritardo per ogni numero
+          }
+        } else {
+          numbersOutput.innerHTML =
+            '<span class="error">Input non valido. Inserisci un numero valido.</span>';
+        }
+      }
     </script>
   </body>
 </html>
