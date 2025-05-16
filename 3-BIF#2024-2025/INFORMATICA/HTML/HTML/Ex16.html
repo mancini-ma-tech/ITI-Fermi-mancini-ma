@@ -1,0 +1,130 @@
+<!--
+Ex16.html
+Definisci 4 bottoni che simulano le 4 operazioni:
+    1. piu,
+    2. meno,
+    3. per,
+    4. diviso
+associa ad ogni bottone una funzione che svolge la relativa operazione e visualizza risultato con alert
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcolatrice Elegante</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        margin-top: 20px;
+        color: #4caf50;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+
+      input[type="number"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #4caf50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #risultato {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+    <script>
+      function somma() {
+        let a = parseFloat(document.getElementById("numero1").value);
+        let b = parseFloat(document.getElementById("numero2").value);
+        document.getElementById("risultato").textContent =
+          "Risultato della somma: " + (a + b);
+      }
+
+      function sottrazione() {
+        let a = parseFloat(document.getElementById("numero1").value);
+        let b = parseFloat(document.getElementById("numero2").value);
+        document.getElementById("risultato").textContent =
+          "Risultato della sottrazione: " + (a - b);
+      }
+
+      function moltiplicazione() {
+        let a = parseFloat(document.getElementById("numero1").value);
+        let b = parseFloat(document.getElementById("numero2").value);
+        document.getElementById("risultato").textContent =
+          "Risultato della moltiplicazione: " + a * b;
+      }
+
+      function divisione() {
+        let a = parseFloat(document.getElementById("numero1").value);
+        let b = parseFloat(document.getElementById("numero2").value);
+        if (b === 0) {
+          document.getElementById("risultato").textContent =
+            "Errore: divisione per zero non consentita.";
+        } else {
+          document.getElementById("risultato").textContent =
+            "Risultato della divisione: " + a / b;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Calcolatrice Elegante</h1>
+    <div class="container">
+      <label for="numero1">Primo numero:</label>
+      <input type="number" id="numero1" />
+      <label for="numero2">Secondo numero:</label>
+      <input type="number" id="numero2" />
+      <div>
+        <button onclick="somma()">Somma</button>
+        <button onclick="sottrazione()">Sottrazione</button>
+        <button onclick="moltiplicazione()">Moltiplicazione</button>
+        <button onclick="divisione()">Divisione</button>
+      </div>
+      <div id="risultato"></div>
+    </div>
+  </body>
+</html>

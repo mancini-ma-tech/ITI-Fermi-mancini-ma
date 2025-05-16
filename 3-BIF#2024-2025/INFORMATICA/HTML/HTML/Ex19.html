@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pulsanti Audio</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      button {
+        background-color: #ff6f61;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 1.2em;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      button:active {
+        transform: scale(1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Riproduzione Audio</h1>
+    <button onclick="playAudio1()">
+      🎵 Big Poppa, The Notorious B.I.G. (2005 Remaster, Explicit V.)
+    </button>
+    <button onclick="playAudio2()">🥁 Hypnotize, The Notorious B.I.G.</button>
+    <button onclick="playAudio3()">🎤 Shook Ones, Mobb Deep</button>
+
+    <script>
+      const audio1 = new Audio(".././MEDIA/BigPoppa.mp3");
+      const audio2 = new Audio(".././MEDIA/Hypnotize.mp3");
+      const audio3 = new Audio(".././MEDIA/ShookOnes.mp3");
+
+      function playAudio1() {
+        audio2.pause();
+        audio2.currentTime = 0;
+        audio3.pause();
+        audio3.currentTime = 0;
+        audio1.play();
+      }
+
+      function playAudio2() {
+        audio1.pause();
+        audio1.currentTime = 0;
+        audio3.pause();
+        audio3.currentTime = 0;
+        audio2.play();
+      }
+
+      function playAudio3() {
+        audio1.pause();
+        audio1.currentTime = 0;
+        audio2.pause();
+        audio2.currentTime = 0;
+        audio3.play();
+      }
+    </script>
+  </body>
+</html>
