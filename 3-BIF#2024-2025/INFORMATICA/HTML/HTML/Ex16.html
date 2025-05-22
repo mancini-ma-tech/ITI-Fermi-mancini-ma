@@ -77,11 +77,16 @@ associa ad ogni bottone una funzione che svolge la relativa operazione e visuali
       }
     </style>
     <script>
+      audio1 = new Audio(".././MEDIA/gun.mp3");
+      audio2 = new Audio(".././MEDIA/nuke.mp3");
+      audio3 = new Audio(".././MEDIA/scanning.mp3");
+      audio4 = new Audio(".././MEDIA/doggyDog.mp3");
       function somma() {
         let a = parseFloat(document.getElementById("numero1").value);
         let b = parseFloat(document.getElementById("numero2").value);
         document.getElementById("risultato").textContent =
           "Risultato della somma: " + (a + b);
+        audio1.play();
       }
 
       function sottrazione() {
@@ -89,6 +94,7 @@ associa ad ogni bottone una funzione che svolge la relativa operazione e visuali
         let b = parseFloat(document.getElementById("numero2").value);
         document.getElementById("risultato").textContent =
           "Risultato della sottrazione: " + (a - b);
+        audio2.play();
       }
 
       function moltiplicazione() {
@@ -96,6 +102,7 @@ associa ad ogni bottone una funzione che svolge la relativa operazione e visuali
         let b = parseFloat(document.getElementById("numero2").value);
         document.getElementById("risultato").textContent =
           "Risultato della moltiplicazione: " + a * b;
+        audio3.play();
       }
 
       function divisione() {
@@ -108,6 +115,7 @@ associa ad ogni bottone una funzione che svolge la relativa operazione e visuali
           document.getElementById("risultato").textContent =
             "Risultato della divisione: " + a / b;
         }
+        audio4.play();
       }
     </script>
   </head>
