@@ -1,10 +1,83 @@
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Es 1 Verifica HTML/CSS JavaScript</title>
-</head>
-<body>
-  
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Verifica Mancini Massimiliano</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .div {
+        padding: 5px;
+        border: 4px solid red;
+        width: 300px;
+        font-size: 30px;
+        color: black;
+        text-align: center;
+        background-color: grey;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: lightblue">
+    <h1>Verifica Mancini Massimiliano</h1>
+
+    <div class="div" style="text-align: center">Corso Inf. Mattucci</div>
+    <br />
+
+    <button onclick="studente.voto()"><strong>NUOVO VOTO </strong></button>
+
+    <h2>Mancini Massimiliano III^B-if</h2>
+
+    <h2 id="media">6</h2>
+    <h2 id="nrv">1</h2>
+    <h2 id="xxx">alunno</h2>
+    <h2 id="scritta">msg</h2>
+    <img id="faccia" src="..//MEDIA/fel.gif" width="200px" height="100px" ; />
+
+    <script>
+      var studente = {
+        nome: "Massimiliano",
+        cognome: "Mancini",
+        classe: "III B-if",
+        inf: 6,
+        k: 1,
+
+        info: function () {
+          return this.nome + " " + this.cognome + " " + this.class;
+        },
+
+        voto: function () {
+          var a = parseInt(prompt("Inserisci voto..."));
+
+          if (!isNaN(a)) {
+            this.inf += a;
+            this.k++;
+            this.media();
+          } else {
+            alert("Inserisci un numero valido!!!");
+          }
+        },
+
+        media: function () {
+          var m = this.inf / this.k;
+          m = m.toFixed(2);
+
+          document.getElementById("media").innerHTML = m;
+          document.getElementById("nrv").innerHTML = this.k;
+
+          if (m < 6) {
+            document.getElementById("media").style.color = "red";
+            document.getElementById("scritta").innerHTML = "Torna a studiare!";
+            document.getElementById("faccia").src = "arr.gif";
+          } else {
+            document.getElementById("media").style.color = "green";
+            document.getElementById("scritta").innerHTML = "Ottimo lavoro!";
+            document.getElementById("faccia").src = "fel.gif";
+          }
+        },
+      };
+
+      // Inizializzazione a caricamento pagina
+      document.getElementById("xxx").innerHTML = studente.info();
+      studente.media();
+    </script>
+  </body>
 </html>

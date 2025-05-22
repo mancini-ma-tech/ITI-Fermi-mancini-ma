@@ -70,7 +70,7 @@
       }
 
       .emoji {
-        font-size: 50px;
+        font-size: 20px;
         display: inline-block;
         animation: bounce 1s infinite;
       }
@@ -95,6 +95,7 @@
     </style>
   </head>
   <body>
+    
     <div class="container">
       <h1>Verifica Voto</h1>
       <label for="vote">Inserisci il voto (0-10):</label>
@@ -110,11 +111,14 @@
         resultDiv.innerHTML = "";
 
         if (vote >= 6) {
-          resultDiv.innerHTML = '<span class="emoji happy">😊</span> Promosso!';
+          resultDiv.innerHTML =
+            '<img src="..//..//MEDIA/fel.gif" alt="Promosso" class="emoji happy" /> Promosso!';
         } else {
-          resultDiv.innerHTML = '<span class="emoji angry">😡</span> Bocciato!';
+          resultDiv.innerHTML =
+            '<img src="..//..//MEDIA/arr.gif" alt="Bocciato" class="emoji angry" /> Bocciato!';
         }
       }
+
     </script>
   </body>
 </html>
