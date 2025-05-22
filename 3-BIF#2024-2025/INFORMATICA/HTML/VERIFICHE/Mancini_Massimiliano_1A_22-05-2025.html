@@ -1,36 +1,76 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Verifica Mancini Massimiliano</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifica Mancini Massimiliano</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-      .div {
-        padding: 5px;
-        border: 4px solid red;
-        width: 300px;
-        font-size: 30px;
-        color: black;
-        text-align: center;
-        background-color: grey;
+      body {
+        background-color: #f0f8ff;
+      }
+      .card {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .btn-custom {
+        background-color: #007bff;
+        color: white;
+      }
+      .btn-custom:hover {
+        background-color: #0056b3;
+      }
+      #faccia {
+        margin-top: 20px;
       }
     </style>
   </head>
 
-  <body style="background-color: lightblue">
-    <h1>Verifica Mancini Massimiliano</h1>
+  <body>
+    <div class="container">
+      <div class="text-center mt-4">
+        <h1 class="display-4">Verifica Mancini Massimiliano</h1>
+      </div>
 
-    <div class="div" style="text-align: center">Corso Inf. Mattucci</div>
-    <br />
+      <div class="card bg-light">
+        <div class="card-body text-center">
+          <h2 class="card-title">Corso Inf. Mattucci</h2>
+          <button class="btn btn-custom mt-3" onclick="studente.voto()">
+            <strong>NUOVO VOTO</strong>
+          </button>
+        </div>
+      </div>
 
-    <button onclick="studente.voto()"><strong>NUOVO VOTO </strong></button>
+      <div class="card bg-white mt-4">
+        <div class="card-body">
+          <h3 class="text-center">Informazioni Studente</h3>
+          <p><strong>Nome e Cognome:</strong> <span id="xxx">alunno</span></p>
+          <p>
+            <strong>Media:</strong> <span id="media" class="fw-bold">6</span>
+          </p>
+          <p><strong>Numero Voti:</strong> <span id="nrv">1</span></p>
+          <p><strong>Messaggio:</strong> <span id="scritta">msg</span></p>
+          <div class="text-center">
+            <img
+              id="faccia"
+              src="..//MEDIA/fel.gif"
+              class="img-fluid"
+              width="200"
+              height="100"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <h2>Mancini Massimiliano III^B-if</h2>
-
-    <h2 id="media">6</h2>
-    <h2 id="nrv">1</h2>
-    <h2 id="xxx">alunno</h2>
-    <h2 id="scritta">msg</h2>
-    <img id="faccia" src="..//MEDIA/fel.gif" width="200px" height="100px" ; />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       var studente = {
@@ -41,7 +81,7 @@
         k: 1,
 
         info: function () {
-          return this.nome + " " + this.cognome + " " + this.class;
+          return this.nome + " " + this.cognome + " " + this.classe;
         },
 
         voto: function () {
@@ -66,11 +106,11 @@
           if (m < 6) {
             document.getElementById("media").style.color = "red";
             document.getElementById("scritta").innerHTML = "Torna a studiare!";
-            document.getElementById("faccia").src = "arr.gif";
+            document.getElementById("faccia").src = "..//..//MEDIA//arr.gif";
           } else {
             document.getElementById("media").style.color = "green";
             document.getElementById("scritta").innerHTML = "Ottimo lavoro!";
-            document.getElementById("faccia").src = "fel.gif";
+            document.getElementById("faccia").src = "..//..//MEDIA/fel.gif";
           }
         },
       };
