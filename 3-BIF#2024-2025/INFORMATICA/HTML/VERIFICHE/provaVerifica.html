@@ -1,0 +1,259 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Futuristico</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+      body {
+        background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+        color: #00ffcc;
+        font-family: "Orbitron", sans-serif;
+        overflow-x: hidden;
+      }
+      .card {
+        background: rgba(0, 0, 0, 0.9);
+        border: 2px solid #00ffcc;
+        border-radius: 15px;
+        box-shadow: 0 0 20px #00ffcc, 0 0 40px #00bfa5;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px #00ffcc, 0 0 60px #00bfa5;
+      }
+      .btn-custom {
+        background: linear-gradient(90deg, #00ffcc, #00bfa5);
+        color: #000;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 0 10px #00ffcc;
+      }
+      .btn-custom:hover {
+        transform: scale(1.1);
+        background: linear-gradient(90deg, #00bfa5, #00ffcc);
+        box-shadow: 0 0 20px #00ffcc, 0 0 40px #00bfa5;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        font-size: 4rem;
+        text-shadow: 0 0 20px #00ffcc, 0 0 40px #00bfa5;
+      }
+      canvas {
+        margin: 20px auto;
+        display: block;
+        max-width: 600px;
+        border: 2px solid #00ffcc;
+        border-radius: 15px;
+        box-shadow: 0 0 20px #00ffcc, 0 0 40px #00bfa5;
+      }
+      .neon-text {
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00bfa5, 0 0 30px #00ffcc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="neon-text">Registro Futuristico</h1>
+        <p class="neon-text">Benvenuto nel registro elettronico futuristico</p>
+      </div>
+
+      <div id="materie">
+        <!-- Sezioni per ogni materia -->
+        <div id="materie">
+          <!-- Sezione Storia -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Storia</h3>
+            <p><strong>Media:</strong> <span id="media-storia">6</span></p>
+            <p><strong>Numero Voti:</strong> <span id="nrv-storia">1</span></p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('storia')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione Italiano -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Italiano</h3>
+            <p><strong>Media:</strong> <span id="media-italiano">6</span></p>
+            <p>
+              <strong>Numero Voti:</strong> <span id="nrv-italiano">1</span>
+            </p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('italiano')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione Matematica -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Matematica</h3>
+            <p><strong>Media:</strong> <span id="media-matematica">6</span></p>
+            <p>
+              <strong>Numero Voti:</strong> <span id="nrv-matematica">1</span>
+            </p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('matematica')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione Informatica -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Informatica</h3>
+            <p><strong>Media:</strong> <span id="media-informatica">6</span></p>
+            <p>
+              <strong>Numero Voti:</strong> <span id="nrv-informatica">1</span>
+            </p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('informatica')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione Sistemi -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Sistemi</h3>
+            <p><strong>Media:</strong> <span id="media-sistemi">6</span></p>
+            <p><strong>Numero Voti:</strong> <span id="nrv-sistemi">1</span></p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('sistemi')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione TPS -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">TPS</h3>
+            <p><strong>Media:</strong> <span id="media-tps">6</span></p>
+            <p><strong>Numero Voti:</strong> <span id="nrv-tps">1</span></p>
+            <button class="btn btn-custom mt-3" onclick="studente.voto('tps')">
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+
+          <!-- Sezione Telecomunicazioni -->
+          <div class="card p-4 mb-4">
+            <h3 class="text-center mb-4 neon-text">Telecomunicazioni</h3>
+            <p>
+              <strong>Media:</strong>
+              <span id="media-telecomunicazioni">6</span>
+            </p>
+            <p>
+              <strong>Numero Voti:</strong>
+              <span id="nrv-telecomunicazioni">1</span>
+            </p>
+            <button
+              class="btn btn-custom mt-3"
+              onclick="studente.voto('telecomunicazioni')"
+            >
+              Inserisci Nuovo Voto
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <canvas id="chart"></canvas>
+      <button class="btn btn-custom mt-3" onclick="exportPDF()">
+        Esporta in PDF
+      </button>
+    </div>
+
+    <script>
+      var studente = {
+        voti: {
+          storia: { totale: 6, count: 1 },
+        },
+
+        voto: function (materia) {
+          var a = parseInt(prompt(`Inserisci voto per ${materia}...`));
+
+          if (!isNaN(a)) {
+            this.voti[materia].totale += a;
+            this.voti[materia].count++;
+            this.media(materia);
+            updateChart();
+          } else {
+            alert("Inserisci un numero valido!!!");
+          }
+        },
+
+        media: function (materia) {
+          var m = this.voti[materia].totale / this.voti[materia].count;
+          m = m.toFixed(2);
+
+          document.getElementById(`media-${materia}`).innerHTML = m;
+          document.getElementById(`nrv-${materia}`).innerHTML =
+            this.voti[materia].count;
+
+          if (m < 6) {
+            document.getElementById(`media-${materia}`).style.color = "red";
+          } else {
+            document.getElementById(`media-${materia}`).style.color = "#00ffcc";
+          }
+        },
+      };
+
+      // Grafico
+      var ctx = document.getElementById("chart").getContext("2d");
+      var chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Storia"],
+          datasets: [
+            {
+              label: "Media Voti",
+              data: [6],
+              backgroundColor: ["#00ffcc"],
+            },
+          ],
+        },
+      });
+
+      function updateChart() {
+        chart.data.datasets[0].data = [
+          studente.voti.storia.totale / studente.voti.storia.count,
+        ];
+        chart.update();
+      }
+
+      // Esportazione PDF
+      function exportPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text("Registro Futuristico", 10, 10);
+        doc.text(
+          `Storia - Media: ${
+            studente.voti.storia.totale / studente.voti.storia.count
+          }`,
+          10,
+          20
+        );
+        doc.save("registro.pdf");
+      }
+    </script>
+  </body>
+</html>
