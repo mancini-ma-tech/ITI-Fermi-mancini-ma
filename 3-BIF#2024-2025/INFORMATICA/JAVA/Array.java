@@ -8,6 +8,7 @@ public class Array {
     }
 
     public void readNames() {
+
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < names.length; i++) {
             System.out.print("Enter name: ");
